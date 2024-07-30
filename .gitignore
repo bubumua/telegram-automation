@@ -26,5 +26,10 @@ Thumbs.db
 # Dependency directories
 node_modules/
 
-# Ignore files starting with "temp"
+# configuration
+*.config
+*.ini
+
+# Ignore files starting with "temp", "config"
 temp*.*
+config*.*
