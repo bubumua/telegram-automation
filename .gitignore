@@ -28,8 +28,6 @@ node_modules/
 
 # configuration
 *.config
-*.ini
 
 # Ignore files starting with "temp", "config"
 temp*.*
-config*.*
