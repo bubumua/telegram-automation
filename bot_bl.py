@@ -165,12 +165,12 @@ async def caps(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                    text=text_caps)
 
 
-async def add_uper(update: Update, context: ContextTypes.DEFAULT_):
+async def add_uper(update: Update, context: ContextTypes.DEFAULT_TYPE):
     uid = context.args.trim()
     add_up(uid)
 
 
-async def delete_uper(update: Update, context: ContextTypes.DEFAULT_):
+async def delete_uper(update: Update, context: ContextTypes.DEFAULT_TYPE):
     uid = context.args.trim()
     remove_up(uid)
 
