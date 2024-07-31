@@ -31,3 +31,5 @@ node_modules/
 
 # Ignore files starting with "temp", "config"
 temp*.*
+signer.py
+autosign.py

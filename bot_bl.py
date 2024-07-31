@@ -165,6 +165,16 @@ async def caps(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                    text=text_caps)
 
 
+async def add_uper(update: Update, context: ContextTypes.DEFAULT_):
+    uid = context.args.trim()
+    add_up(uid)
+
+
+async def delete_uper(update: Update, context: ContextTypes.DEFAULT_):
+    uid = context.args.trim()
+    remove_up(uid)
+
+
 async def callback_minute(context: ContextTypes.DEFAULT_TYPE):
     # data = context.job.data
     for up in uplist:
@@ -192,11 +202,15 @@ if __name__ == '__main__':
     start_handler = CommandHandler('start', start)
     caps_handler = CommandHandler('caps', caps)
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
+    addup_handler = CommandHandler('addup', add_uper)
+    rmup_handler = CommandHandler('rmup', delete_uper)
 
     # add handlers
     application.add_handler(start_handler)
     application.add_handler(echo_handler)
     application.add_handler(caps_handler)
+    application.add_handler(addup_handler)
+    application.add_handler(rmup_handler)
 
     # get job_queue
     job_queue = application.job_queue
