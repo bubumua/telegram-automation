@@ -72,7 +72,7 @@ def fetch_live_info_by_uid(uid: str | int) -> dict:
     header = {
         'User-Agent': 'Mozilla/5.0',
     }
-    res = requests.get(url, params=params, headers=header).json()
+    res = requests.get(url, params=params, headers=header, verity=False).json()
     info = {
         'code': res['code'],
         'message': res['message'],
