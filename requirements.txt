@@ -1,0 +1,4 @@
+telethon
+python-telegram-bot
+requests
+"python-telegram-bot[job-queue]"
