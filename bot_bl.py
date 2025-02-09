@@ -12,6 +12,7 @@ from telegram.ext import MessageHandler
 from telegram.ext import ApplicationBuilder
 from telegram.ext import CommandHandler
 from telegram.ext import ContextTypes
+
 # from telegram.request import HTTPXRequest
 
 
@@ -23,12 +24,13 @@ config.read('config.ini')
 BOT_TOKEN = config.get('bot', 'bot_token')
 CHAT_ID = config.get('bot', 'chatid')
 
+
 # begin: define subscription operations
 
 
 def get_json_data(filename='uplist') -> dict:
     jsondata = {}
-    full_filename = filename+'.json'
+    full_filename = filename + '.json'
     # 检查是否存在 json 文件
     if os.path.exists(full_filename):
         logtext = f"Existing data in {full_filename}: "
@@ -36,9 +38,9 @@ def get_json_data(filename='uplist') -> dict:
         with open(full_filename, 'r') as json_file:
             jsondata = json.load(json_file)
             if 'uplist' in jsondata:
-                logtext = logtext+"uplist exists."
+                logtext = logtext + "uplist exists."
             else:
-                logtext = logtext+"uplist does not exist."
+                logtext = logtext + "uplist does not exist."
                 jsondata['uplist'] = []
                 with open(full_filename, 'w') as json_file:
                     json.dump(jsondata, json_file)
@@ -72,7 +74,7 @@ def fetch_live_info_by_uid(uid: str | int) -> dict:
     header = {
         'User-Agent': 'Mozilla/5.0',
     }
-    res = requests.get(url, params=params, headers=header, verity=False).json()
+    res = requests.get(url, params=params, headers=header).json()
     info = {
         'code': res['code'],
         'message': res['message'],
@@ -139,6 +141,7 @@ def remove_uid_from_list(uid):
     else:
         return False
 
+
 # end: define subscription operations
 
 
@@ -156,6 +159,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
+
 
 # begin: define bot function
 
@@ -217,6 +221,7 @@ async def callback_minute(context: ContextTypes.DEFAULT_TYPE):
                 text += "已下播。"
             # forward notification
             await context.bot.send_message(chat_id=CHAT_ID, text=text)
+
 
 # end: define bot function
 
